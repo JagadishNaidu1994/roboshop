@@ -30,26 +30,26 @@ else
     echo -e "$G You Are Root :) $N"
 fi
 
-cp /home/centos/roboshop/mongo.repo /etc/yum.repos.d/mongo.repo 
+cp /home/centos/roboshop/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOG_FILE
 
 VALIDATE $? "Copying Mongo.Repo"
 
-dnf install mongodb-org -y 
+dnf install mongodb-org -y &>> $LOG_FILE 
 
 VALIDATE $? "Installing Mongodb"
 
-systemctl enable mongod
+systemctl enable mongod &>> $LOG_FILE
 
 VALIDATE $? "Enabling Mongodb"
 
-systemctl start mongod
+systemctl start mongod &>> $LOG_FILE
 
 VALIDATE $? "Starting Mongodb"
 
-sed -i s/127.0.0.1/0.0.0.0 /etc/mongod.conf
+sed -i 's/127.0.0.1/0.0.0.0' /etc/mongod.conf &>> $LOG_FILE
 
 VALIDATE $? "Enabling Remote Access"
 
-systemctl restart mongod
+systemctl restart mongod &>> $LOG_FILE
 
 VALIDATE $? "Restarting Mongodb"
