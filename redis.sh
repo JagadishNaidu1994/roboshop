@@ -46,6 +46,8 @@ VALIDATE $? "Installing Redis"
 
 sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis/redis.conf &>> $LOG_FILE
 
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf &>> $LOG_FILE
+
 VALIDATE $? "Allowingh remote"
 
 systemctl enable redis &>> $LOG_FILE
