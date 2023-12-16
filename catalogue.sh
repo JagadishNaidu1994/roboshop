@@ -32,12 +32,12 @@ fi
 
 dnf module disable nodejs -y &>> LOG_FILE
 
-VALIDATE $? "Disabling modejs Module"
+VALIDATE $? "Disabling nodejs Module"
 
 
 dnf module enable nodejs:18 -y &>> LOG_FILE
 
-VALIDATE $? "Enabling modejs-18 Module"
+VALIDATE $? "Enabling nodejs-18 Module"
 
 dnf install nodejs -y  &>> $LOG_FILE 
 
@@ -81,7 +81,7 @@ systemctl start catalogue &>> $LOG_FILE
 
 VALIDATE $? "Restarting Catalogue Service"
 
-cp /home/centos/roboshop/monogo.repo /etc/yum.repos.d/mongo.repo &>> $LOG_FILE 
+cp /home/centos/roboshop/mongo.repo /etc/yum.repos.d/mongo.repo &>> $LOG_FILE 
 
 VALIDATE $? "Adding Mongo Repo"
 
