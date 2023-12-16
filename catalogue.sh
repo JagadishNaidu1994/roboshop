@@ -34,7 +34,6 @@ dnf module disable nodejs -y &>> LOG_FILE
 
 VALIDATE $? "Disabling nodejs Module"
 
-
 dnf module enable nodejs:18 -y &>> LOG_FILE
 
 VALIDATE $? "Enabling nodejs-18 Module"
