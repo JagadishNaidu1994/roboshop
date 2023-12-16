@@ -17,7 +17,7 @@ VALIDATE (){
     then 
         echo -e "$2 $G Success....!!!!$N"
     else   
-        echo -e "\e[31m Installation \e[0m of $2 $R Failed...$N"
+        echo -e "$2 $R Failed...$N"
     fi
 }
 
@@ -50,7 +50,7 @@ VALIDATE $? "Downloading Frontend"
 
 cd /usr/share/nginx/html &>> $LOG_FILE
 
-unzip /tmp/web.zip &>> $LOG_FILE
+unzip -o /tmp/web.zip &>> $LOG_FILE
 
 VALIDATE $? "Extracting Frontend"
 
