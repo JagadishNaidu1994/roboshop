@@ -29,3 +29,51 @@ then
 else 
     echo -e "$G You Are Root :) $N"
 fi
+
+dnf module disable nodejs -y &>> LOG_FILE
+
+VALIDATE $? "Disabling nodejs Module"
+
+dnf module enable nodejs:18 -y &>> LOG_FILE
+
+VALIDATE $? "Enabling nodejs-18 Module"
+
+dnf install nodejs -y  &>> $LOG_FILE 
+
+VALIDATE $? "Installing Nodejs-18"
+
+useradd roboshop &>> $LOG_FILE 
+
+VALIDATE $? "Adding User"
+
+mkdir /app &>> $LOG_FILE 
+
+curl -o /tmp/cart.zip https://roboshop-builds.s3.amazonaws.com/cart.zip &>> $LOG_FILE 
+
+VALIDATE $? "Downloading Required Content"
+
+cd /app &>> $LOG_FILE 
+
+unzip -o /tmp/cart.zip &>> $LOG_FILE  
+
+VALIDATE $? "Unzipping to tmp"
+
+cd /app
+
+npm install &>> $LOG_FILE  
+
+VALIDATE $? "Installing Dependencies and Libraries"
+
+cp /home/centos/roboshop/cart.service /etc/systemd/system/cart.service &>> $LOG_FILE 
+
+VALIDATE $? "Adding cart.service"
+
+systemctl daemon-reload &>> $LOG_FILE 
+
+VALIDATE $? "Reloading Daemon"
+
+systemctl enable cart &>> $LOG_FILE 
+
+VALIDATE $? "Enabling cart Service"
+
+systemctl start cart &>> $LOG_FILE 
