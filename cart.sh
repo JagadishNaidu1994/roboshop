@@ -58,8 +58,6 @@ unzip -o /tmp/cart.zip &>> $LOG_FILE
 
 VALIDATE $? "Unzipping to tmp"
 
-cd /app
-
 npm install &>> $LOG_FILE  
 
 VALIDATE $? "Installing Dependencies and Libraries"
