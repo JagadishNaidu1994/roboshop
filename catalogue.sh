@@ -88,6 +88,6 @@ dnf install mongodb-org-shell -y &>> $LOG_FILE
 
 VALIDATE $? "Installing Mongodb-Shell"
 
-mongo --host 172.31.45.35 </app/schema/catalogue.js &>> $LOG_FILE 
+mongo --host catalogue.jagadishdaws.online </app/schema/catalogue.js &>> $LOG_FILE 
 
 VALIDATE $? "Adding Host to Mongo db"
