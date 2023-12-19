@@ -10,7 +10,7 @@ MONGDB_HOST=mongodb.jagadishdaws.online
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOG_FILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "script stareted executing at $TIMESTAMP" &>> $LOG_FILE
+echo "script started executing at $TIMESTAMP" &>> $LOG_FILE
 
 VALIDATE(){
     if [ $1 -ne 0 ]
