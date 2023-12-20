@@ -5,7 +5,7 @@ INSTANCE=("mongo" "redis" "mysql" "rabbitmq" "cart" "catalogue" "user" "shipping
 
 
 
-for i in "${$INSTANCE[@]}"
+for i in "${INSTANCE[@]}"
 
 do
     if [$i=="mongo"] || [$i=="mysql"] || [$i=="shipping"]
